@@ -58,8 +58,8 @@ public class Main {
                 }
             }
             alunos.add(aluno1);
-        }
-        for (Aluno aluno:alunos) {
+        } //procurando e removendo um aluno da lista
+        /*for (Aluno aluno:alunos) {
             if(aluno.getNome().equalsIgnoreCase("alex")) { //localizar um aluno na lista
                 alunos.remove(aluno);//remover o aluno encontrado
                 break;
@@ -76,9 +76,21 @@ public class Main {
             System.out.println("suas materias são:");
             for (Disciplina disciplina: aluno.getDisciplinas()) {
                 System.out.println(disciplina.getDisciplina());
-                
-            }
 
+            }
+        }*/
+
+        //nova aula: percorrendo a lista pelas posições
+        for(int pos = 0; pos < alunos.size(); pos++){
+            Aluno aluno = alunos.get(pos);
+            System.out.println("Aluno = " + aluno.getNome());
+            System.out.println("Media do aluno =  " + aluno.getMediaNota());
+            System.out.println("Aprovado ou Reprovado? " + aluno.getAlunoAprovado2());
+            System.out.println("-------------------------------");
+
+            for(Disciplina disc: aluno.getDisciplinas()){
+                System.out.println("Materia = " + disc.getDisciplina() + "Nota = "+disc.getNota());
+            }
         }
             
         }
