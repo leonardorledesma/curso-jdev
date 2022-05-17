@@ -1,3 +1,8 @@
+package classes;
+
+import classes.Aluno;
+import classes.Disciplina;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +64,7 @@ public class Main {
             }
             alunos.add(aluno1);
         } //procurando e removendo um aluno da lista
-        /*for (Aluno aluno:alunos) {
+        /*for (classes.Aluno aluno:alunos) {
             if(aluno.getNome().equalsIgnoreCase("alex")) { //localizar um aluno na lista
                 alunos.remove(aluno);//remover o aluno encontrado
                 break;
@@ -70,11 +75,11 @@ public class Main {
                 System.out.println("-------------------------------------------------------");
             }
             }
-        for (Aluno aluno: alunos) {
+        for (classes.Aluno aluno: alunos) {
             System.out.println("alunos que sobraram na lista");
             System.out.println(aluno.getNome());
             System.out.println("suas materias são:");
-            for (Disciplina disciplina: aluno.getDisciplinas()) {
+            for (classes.Disciplina disciplina: aluno.getDisciplinas()) {
                 System.out.println(disciplina.getDisciplina());
 
             }
@@ -83,7 +88,22 @@ public class Main {
         //nova aula: percorrendo a lista pelas posições
         for(int pos = 0; pos < alunos.size(); pos++){
             Aluno aluno = alunos.get(pos);
-            System.out.println("Aluno = " + aluno.getNome());
+
+            //buscar e trocar um aluno
+
+            if (aluno.getNome().equalsIgnoreCase("alex")){
+                Aluno trocar = new Aluno();
+                trocar.setNome("classes.Aluno foi trocado");
+
+                Disciplina disciplina = new Disciplina();
+                disciplina.setDisciplina("Matematica");
+                disciplina.setNota(96);
+                trocar.getDisciplinas().add(disciplina);
+                alunos.set(pos, trocar);
+                aluno = alunos.get(pos);
+
+            }
+            System.out.println("classes.Aluno = " + aluno.getNome());
             System.out.println("Media do aluno =  " + aluno.getMediaNota());
             System.out.println("Aprovado ou Reprovado? " + aluno.getAlunoAprovado2());
             System.out.println("-------------------------------");

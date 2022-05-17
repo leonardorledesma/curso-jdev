@@ -1,3 +1,5 @@
+package classes;
+
 import java.util.Objects;
 /*Esta classe disciplina servira para todos os objetos de notas  e materias*/
 public class Disciplina {
@@ -36,7 +38,7 @@ public class Disciplina {
 
     @Override
     public String toString() {
-        return "Disciplina{" +
+        return "classes.Disciplina{" +
                 "nota=" + nota +
                 ", disciplina='" + disciplina + '\'' +
                 '}';
