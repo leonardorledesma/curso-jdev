@@ -22,6 +22,11 @@ public class Aluno extends Pessoa{
         return disciplinas;
     }
 
+    @Override
+    public double salario() {
+        return 1500.00;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -30,11 +35,11 @@ public class Aluno extends Pessoa{
         this.nome = nome;
     }
 
-    public String getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public void setIdade(String idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 
@@ -172,5 +177,10 @@ public class Aluno extends Pessoa{
                 ", serieMatriculado='" + serieMatriculado + '\'' +
                 ", disciplinas=" + disciplinas +
                 '}';
+    }
+
+    @Override
+    public boolean pessoaMaiorIdade() {
+        return idade >= 21;
     }
 }
