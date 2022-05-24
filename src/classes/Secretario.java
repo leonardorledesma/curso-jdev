@@ -1,9 +1,21 @@
 package classes;
 
-public class Secretario extends Pessoa{
+
+import interfaces.PermitirAcessos;
+
+public class Secretario extends Pessoa implements PermitirAcessos {
     private String registro;
     private String nivelCargo;
     private String experiencia;
+
+    private String login;
+    private String senha;
+
+    public Secretario(){};
+    public Secretario(String login, String senha){
+        this.login = login;
+        this.senha = senha;
+    };
 
     public String getRegistro() {
         return registro;
@@ -50,4 +62,40 @@ public class Secretario extends Pessoa{
     public double salario() {
         return 1800.90 * 0.9;
     }
+
+        //esse é o contrato de autenticação
+    /*@Override
+    public boolean autenticar() {
+        return login.equals("admin") && senha.equals("admin");// retorna sim caso login e senha sejam admin
+    }*/
+
+    @Override
+    public boolean autenticar(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+        return autenticar();
+    }
+
+    @Override
+    public boolean autenticar() {
+        return login.equals("admin") && senha.equals("admin");
+    }
+
+
+
+    /*public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }*/
 }

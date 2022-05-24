@@ -2,7 +2,9 @@ package classes;
 
 import classes.Aluno;
 import classes.Disciplina;
+import classesAuxiliares.FuncaoAutenticacao;
 import constantes.StatusAluno;
+import interfaces.PermitirAcessos;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -16,8 +18,21 @@ public class Main {
         String login = JOptionPane.showInputDialog("Informe o login");
         String senha = JOptionPane.showInputDialog("Informe o login");
 
-        if(login.equalsIgnoreCase("admin")
-                && senha.equalsIgnoreCase("admin")) {
+        /*Secretario secretario = new Secretario();// interface trabalhando diretamente com o objeto.
+        secretario.setLogin(login);
+        secretario.setSenha(senha);*/
+
+        /*podemos instanciar a prorpia interface como um new secretario mas com isso não poderemos usar os
+        * gettter e setter da classe secretario, como a seguir*/
+
+        //FuncaoAutenticacao autenticacao = new FuncaoAutenticacao();
+
+        PermitirAcessos permitirAcessos = new Secretario(login, senha);
+
+
+
+        if(new FuncaoAutenticacao(permitirAcessos).autenticar()) { // se TRUE acessa se FALSE nao acessa // vou travar para somente
+                                                                            //quem tem 100% de acesso legitimo
 
 
             List<Aluno> alunos = new ArrayList<Aluno>();
@@ -158,6 +173,8 @@ public class Main {
                 System.out.println("Aluno : " + aluno.getNome() + " Resultado = " + aluno.getAlunoAprovado2() + " com média " + aluno.getMediaNota());
             }
 
+        }else{
+            JOptionPane.showMessageDialog(null, "acesso negado");
         }
 
         }
