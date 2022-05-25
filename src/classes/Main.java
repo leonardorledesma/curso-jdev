@@ -4,20 +4,23 @@ import classes.Aluno;
 import classes.Disciplina;
 import classesAuxiliares.FuncaoAutenticacao;
 import constantes.StatusAluno;
+import excessao.ExcessaoProcessarNota;
 import interfaces.PermitirAcessos;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
         try {
-            File file = new File("arquivo.txt");
+            lerArquivo();
 
             String login = JOptionPane.showInputDialog("Informe o login");
             String senha = JOptionPane.showInputDialog("Informe o login");
@@ -186,14 +189,14 @@ public class Main {
 
             //mensagem do erro ou causa
             System.out.println("Mensagem: " + e.getMessage());
-            
+
             for(int i = 0; i < e.getStackTrace().length; i++){
-                saida.append("Classe de erro: " + e.getStackTrace()[i].getClassName());
-                saida.append("Método de erro: " + e.getStackTrace()[i].getMethodName());
-                saida.append("Linha de erro: " + e.getStackTrace()[i].getLineNumber());
+                saida.append("\n Classe de erro: " + e.getStackTrace()[i].getClassName());
+                saida.append("\n Método de erro: " + e.getStackTrace()[i].getMethodName());
+                saida.append("\n Linha de erro: " + e.getStackTrace()[i].getLineNumber());
                 saida.append("\n Class : " + e.getClass().getName());
             }
-            
+
             JOptionPane.showMessageDialog(null,"erro de conversão de numero " + saida.toString());
         }catch(NullPointerException e){
             JOptionPane.showMessageDialog(null,"Opa erro de null point " + e.getClass());
@@ -203,6 +206,13 @@ public class Main {
         }finally{ //sempre é executado ocorrendo erro ou não
             JOptionPane.showMessageDialog(null, "Obrigado por aprender Java comigo");
             }
-
+    }
+    public static void lerArquivo() throws ExcessaoProcessarNota{
+        try {
+            File file = new File("arquivo.txt");
+            Scanner scanner = new Scanner(file);
+        }catch(FileNotFoundException e){
+            throw new ExcessaoProcessarNota(e.getMessage());
+        }
     }
 }
