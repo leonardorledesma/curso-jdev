@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args)  {
 
         try {
-            lerArquivo();
+            //lerArquivo();
 
             String login = JOptionPane.showInputDialog("Informe o login");
             String senha = JOptionPane.showInputDialog("Informe o login");
