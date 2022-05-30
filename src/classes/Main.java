@@ -82,7 +82,7 @@ public class Main {
 
                         Disciplina disciplina = new Disciplina();
                         disciplina.setDisciplina(nomeDisciplina);
-                        disciplina.setNota(Double.parseDouble(notaDisciplina));
+                        //disciplina.setNota(Double.parseDouble(notaDisciplina));
 
                         aluno1.getDisciplinas().add(disciplina);
                     }
