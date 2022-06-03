@@ -35,8 +35,24 @@ public class TelaTimeThread extends JDialog {
             }
         }
     };
+    private Runnable thread2 = new Runnable(){
+
+        @Override
+        public void run() {
+            while (true){
+                mostraTempo2.setText(new SimpleDateFormat("dd-MM-yyy hh:mm:ss")
+                        .format(Calendar.getInstance().getTime()));
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
 
     private Thread thread1Time;
+    private Thread thread2Time;
 
 
 
@@ -91,18 +107,25 @@ public class TelaTimeThread extends JDialog {
                 //executa o click no botão
                 Thread thread1Time = new Thread(thread1);
                 thread1Time.start();
+                Thread thread2Time = new Thread(thread2);
+                thread2Time.start();
+
+                jButton.setEnabled(false);
+                jButton2.setEnabled(true);
             }
         });
         jButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 thread1Time.stop();
+                thread2Time.stop();
+
+                jButton.setEnabled(true);
+                jButton2.setEnabled(false);
             }
         });
 
-
-
-
+        jButton2.setEnabled(false);
 
         add(jPanel, BorderLayout.WEST);
         setVisible(true);// torna a tela visivel para o usuario, sempre será o ultimo comando.
