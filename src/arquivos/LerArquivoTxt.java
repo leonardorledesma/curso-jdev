@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class LerArquivoTxt {
     public static void main(String[] args) throws FileNotFoundException,  NumberFormatException {
-        FileInputStream entradaArquivo = new FileInputStream(new File("D:\\JDev\\listas2\\src\\arquivos\\arquivo.txt\\"));
+        FileInputStream entradaArquivo = new FileInputStream(new File("D:\\JDev\\listas2\\src\\arquivos\\arquivo.csv\\"));
         Scanner lerArquivo = new Scanner(entradaArquivo, "UTF-8");
 
         List<Pessoa> pessoas = new ArrayList<Pessoa>();
